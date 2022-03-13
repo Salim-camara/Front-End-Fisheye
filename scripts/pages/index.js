@@ -1,4 +1,4 @@
-// fonction de récupération de la data
+// fonction de récupération de la data $$$$$$$$$$$$$$
 let dataPhotographers = null;
 let dataMedia = null;
 const url = '../../data/photographers.json';
@@ -32,10 +32,8 @@ class Fetchdata {
             .catch((err) => console.log('erreur récupération data ' + err))
     }
 }
-
 const photographers = new Fetchdata(url).photographers();
 const media = new Fetchdata(url).media();
-
 
 async function displayData(dataPhotographers) {
     const photographersSection = document.querySelector(".photographer_section");
@@ -47,11 +45,12 @@ async function displayData(dataPhotographers) {
     });
 };
 
-async function init() {
-    displayData(dataPhotographers);
-};
+photographers.then(() => displayData(dataPhotographers));
+// fin de récupération de affichage des données $$$$$$$$$$$$$
 
-photographers.then(() => init());
+// fonctionnement global de la page
+
+
 
 
 

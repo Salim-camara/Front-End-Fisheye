@@ -48,3 +48,32 @@ h1 {
     height: 200px;
     width: 200px;
 }
+
+/* style factory */
+.descTitle {
+    color: #901C1C;
+    margin: 0;
+    font-size: 22px;
+    font-weight: lighter;
+}
+
+.h2 {
+    margin-bottom: 0;
+}
+
+.desc {
+    margin: 0;
+    font-weight: lighter;
+}
+
+.price {
+    opacity: 0.5;
+    margin: 0;
+}
+
+.linkContainer {
+    text-decoration: none;
+    text-align: center;
+}
+
+
