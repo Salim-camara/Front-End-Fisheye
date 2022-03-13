@@ -1,5 +1,5 @@
 function photographerFactory(data) {
-    const { name, portrait, city, country, tagline, price } = data;
+    const { name, portrait, city, country, tagline, price, id } = data;
 
     const picture = `assets/photographers/${portrait}`;
 
@@ -18,7 +18,7 @@ function photographerFactory(data) {
         const linkContainer = document.createElement('a');
         linkContainer.appendChild(img);
         linkContainer.appendChild(h2);
-        linkContainer.href = '/index.html';
+        linkContainer.href = `/photographer.html#${id}`;
         linkContainer.classList.add('linkContainer');
 
         const descTitle = document.createElement( 'h4' );
