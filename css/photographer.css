@@ -74,3 +74,37 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+.photograph-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.photograph-info {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.photograph-info--title {
+    color: #D3573C;
+    margin: 0;
+    font-weight: lighter;
+    font-size: 55px;
+}
+
+.photograph-info--location {
+    color: #901C1C;
+    margin: 5px 0 10px;
+}
+
+.photograph-info--desc {
+    margin: 0;
+}
+
+.photograph-info--img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}
