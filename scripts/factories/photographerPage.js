@@ -13,7 +13,6 @@ const photographInfo = (data) => {
 
     const imgPhotograph = document.querySelector('.photograph-info--img');
     imgPhotograph.setAttribute("src", picture);
-    imgPhotograph.style.borderRadius = '50%';
 }
 
 
@@ -21,6 +20,37 @@ const photographInfo = (data) => {
 
 
 
-const photographerProject = () => {
+const photographerProject = (data) => {
+    console.log('factory_media ' + JSON.stringify(data));
+    let totleLikes = 0;
+    const container = document.querySelector('.photoContainer');
+
+    for(const element of data) {
+        const { title, image, likes } = element;
+        totleLikes += likes;
+        const picture = `assets/images/${image}`;
+        const cardContainer = document.createElement('div');
+        const cardTextContainer = document.createElement('div');
+        cardTextContainer.classList.add('cardTextContainer');
+
+        const imgCard = document.createElement('img');
+        imgCard.classList.add('imgCard');
+        imgCard.setAttribute("src", picture);
+
+        const titleCard = document.createElement('span');
+        titleCard.innerHTML = `${title}`;
+        titleCard.classList.add('titleCard');
+        cardTextContainer.appendChild(titleCard);
+
+        const likesCard = document.createElement('span');
+        likesCard.innerHTML = `${likes}`;
+        likesCard.classList.add('likesCard');
+        cardTextContainer.appendChild(likesCard);
+
+        cardContainer.appendChild(imgCard);
+        cardContainer.appendChild(cardTextContainer);
+        container.appendChild(cardContainer);
+ 
+    }
 
 }

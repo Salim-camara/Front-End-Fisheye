@@ -8,14 +8,22 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
+
+
+    <!-- header -->
     <header>
       <img src="assets/images/logo.png" class="logo" />
     </header>
+    <!-- pop-up price -->
+    <div class="pop-up">
+      <div class="pop-up__likes">2040231</div>
+      <div class="pop-up__price">300E/jour</div>
+    </div>
+
+
+    <!-- main -->
     <main id="main">
-      <!-- fail -->
-      <div class="photograph-info">
-        
-      </div>
+
       <div class="photograph-header">
         <div class="photograph-info">
           <h1 class="photograph-info--title"></h1>
@@ -25,20 +33,51 @@
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
         <img class="photograph-info--img" />
       </div>
-      <div class="photograph-img">
 
+      <div class="tri">
+        <span>Trier par</span>
+        <select class="tri--selecter">
+          <option value="test">test</option>
+          <option value="test">test</option>
+          <option value="test">test</option>
+          <option value="test">test</option>
+        </select>
       </div>
+
+      <div class="photoContainer"></div>
     </main>
+
+
+    <!-- modal -->
     <div id="contact_modal">
 			<div class="modal">
 				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <div class="modalHeaderContainer">
+            <h2 class="titleModal">Contactez-moi</h2>
+            <img src="assets/icons/close.svg" onclick="closeModal()" />
+          </div>
+
+          <div class="modalNamePhotographer">
+
+          </div>
+          
         </header>
 				<form>
 					<div>
 						<label>Prénom</label>
-						<input />
+						<input class="inputForm"/>
+					</div>
+          <div>
+						<label>Nom</label>
+						<input class="inputForm"/>
+					</div>
+          <div>
+						<label>Email</label>
+						<input class="inputForm"/>
+					</div>
+          <div>
+						<label>Votre message</label>
+						<textarea></textarea>
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>

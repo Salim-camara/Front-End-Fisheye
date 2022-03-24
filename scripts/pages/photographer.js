@@ -25,7 +25,8 @@ class FetchPhotographer {
 }
 
 const photographer = new FetchPhotographer(url, id).photographer();
-photographer.then(() => photographInfo(dataPhotographer));
-
-// 
+photographer.then(() => {
+    photographInfo(dataPhotographer);
+    photographerProject(dataMediaPhotographer);
+});
 
