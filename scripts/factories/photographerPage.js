@@ -13,15 +13,19 @@ const photographInfo = (data) => {
 
     const imgPhotograph = document.querySelector('.photograph-info--img');
     imgPhotograph.setAttribute("src", picture);
+
+    // nom du photograhe dans la modal
+    document.querySelector('.modalNamePhotographer').innerHTML = `${name}`;
 }
 
 
 
 
 
+let arrayLightBox = [];
 
 const photographerProject = (data) => {
-    console.log('factory_media ' + JSON.stringify(data));
+    arrayLightBox = data;
     let totleLikes = 0;
     const container = document.querySelector('.photoContainer');
 
@@ -49,8 +53,83 @@ const photographerProject = (data) => {
 
         cardContainer.appendChild(imgCard);
         cardContainer.appendChild(cardTextContainer);
-        container.appendChild(cardContainer);
- 
+        container.appendChild(cardContainer);  
     }
-
 }
+
+// lightbox
+let maxCompteur = null;
+let compteur = 0;
+const imgContainer = document.querySelector('.imglight');
+const leftButtonLight = document.querySelector('.leftlight');
+const rightButtonLight = document.querySelector('.rightlight');
+const lightboxImgContainer = document.querySelector('.lightbox__container');
+
+// init first image
+const handleArrayLightBox = async () => {
+    setTimeout(() => {
+        if(arrayLightBox[0].image) {
+            const firstImg = document.createElement('img');
+            firstImg.setAttribute('src', `assets/images/${arrayLightBox[0].image}`);
+            firstImg.style.maxHeight = '100%';
+            firstImg.style.maxWidth = '100%';
+            lightboxImgContainer.appendChild(firstImg);
+            
+        } else {
+            const firstVideo = document.createElement('video');
+            firstVideo.setAttribute('src', `assets/images/${arrayLightBox[0].video}`);
+            firstVideo.style.maxHeight = '100%';
+            firstVideo.style.maxWidth = '100%';
+            lightboxImgContainer.appendChild(firstVideo);
+        }
+
+        console.log(arrayLightBox);
+        maxCompteur = arrayLightBox.length; 
+    }, 100);
+}
+handleArrayLightBox();
+
+
+leftButtonLight.addEventListener('click', () => {
+    if(compteur > 0) {
+        if(arrayLightBox[compteur - 1].video) {
+            lightboxImgContainer.innerHTML = "";
+            const video = document.createElement('video');
+            video.setAttribute('src', `assets/images/${arrayLightBox[compteur - 1].video}`);
+            video.style.maxHeight = '100%';
+            video.style.maxWidth = '100%';
+            lightboxImgContainer.appendChild(video);
+
+        } else {
+            lightboxImgContainer.innerHTML = "";
+            const img = document.createElement('img');
+            img.setAttribute('src', `assets/images/${arrayLightBox[compteur - 1].image}`);
+            img.style.maxHeight = '100%';
+            img.style.maxWidth = '100%';
+            lightboxImgContainer.appendChild(img);
+        }
+        compteur -= 1;
+    }
+});
+
+rightButtonLight.addEventListener('click', () => {
+    if(compteur < maxCompteur) {
+        if(arrayLightBox[compteur + 1].video) {
+            lightboxImgContainer.innerHTML = "";
+            const video = document.createElement('video');
+            video.setAttribute('src', `assets/images/${arrayLightBox[compteur + 1].video}`);
+            video.style.maxHeight = '100%';
+            video.style.maxWidth = '100%';
+            lightboxImgContainer.appendChild(video);
+
+        } else {
+            lightboxImgContainer.innerHTML = "";
+            const img = document.createElement('img');
+            img.setAttribute('src', `assets/images/${arrayLightBox[compteur + 1].image}`);
+            img.style.maxHeight = '100%';
+            img.style.maxWidth = '100%';
+            lightboxImgContainer.appendChild(img);
+        }
+        compteur += 1;
+    }
+});
