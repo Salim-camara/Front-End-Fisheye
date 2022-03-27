@@ -188,9 +188,16 @@ form input {
     right: 80px;
     display: flex;
     justify-content: space-between;
+    flex-wrap: nowrap;
     background-color: #DB8876FF;
     padding: 10px;
     border-radius: 5px 5px 0 0;
+}
+
+.pop-up__likes {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-right: 15px;
 }
 
 /* tri */
