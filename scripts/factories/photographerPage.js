@@ -26,11 +26,12 @@ let arrayLightBox = [];
 // compteur pour lightbox
 let compteur = 0;
 let maxCompteur = 0;
+let totleLikes = 0;
+const textLight = document.querySelector('.textlight');
 
 const photographerProject = (data) => {
     arrayLightBox = data;
     maxCompteur = data.length;
-    let totleLikes = 0;
     const container = document.querySelector('.photoContainer');
 
     for(i = 0; i < data.length; i++) {
@@ -44,11 +45,13 @@ const photographerProject = (data) => {
 
         const handleCardContainer = () => {
             compteur = cardContainer.id;
+            textLight.innerHTML = `${data[cardContainer.id].title}`;
             // init first img in lightbox
             if(data[cardContainer.id].video) {
                 lightboxImgContainer.innerHTML = "";
                 const video = document.createElement('video');
                 video.setAttribute('src', `assets/images/${data[cardContainer.id].video}`);
+                video.setAttribute('controls', true);
                 video.style.maxHeight = '100%';
                 video.style.maxWidth = '100%';
                 lightboxImgContainer.appendChild(video);
@@ -88,6 +91,7 @@ const photographerProject = (data) => {
     }
 }
 
+
 // lightbox
 const imgContainer = document.querySelector('.imglight');
 const leftButtonLight = document.querySelector('.leftlight');
@@ -99,36 +103,16 @@ closeButtonLight.addEventListener('click', () => {
     document.querySelector('.lightbox').classList.add('closelightaction');
 });
 
-leftButtonLight.addEventListener('click', () => {
-    if(compteur > 0) {
-        if(arrayLightBox[compteur - 1].video) {
-            lightboxImgContainer.innerHTML = "";
-            const video = document.createElement('video');
-            video.setAttribute('src', `assets/images/${arrayLightBox[compteur - 1].video}`);
-            video.style.maxHeight = '100%';
-            video.style.maxWidth = '100%';
-            lightboxImgContainer.appendChild(video);
-
-        } else {
-            lightboxImgContainer.innerHTML = "";
-            const img = document.createElement('img');
-            img.setAttribute('src', `assets/images/${arrayLightBox[compteur - 1].image}`);
-            img.style.maxHeight = '100%';
-            img.style.maxWidth = '100%';
-            lightboxImgContainer.appendChild(img);
-        }
-        compteur -= 1;
-    }
-});
-
-rightButtonLight.addEventListener('click', () => {
+const handleRightButtonFunction = () => {
     if(compteur < maxCompteur) {
+        textLight.innerHTML = arrayLightBox[parseInt(compteur) + 1].title;
         if(arrayLightBox[parseInt(compteur) + 1].video) {
             lightboxImgContainer.innerHTML = "";
             const video = document.createElement('video');
             video.setAttribute('src', `assets/images/${arrayLightBox[parseInt(compteur) + 1].video}`);
             video.style.maxHeight = '100%';
             video.style.maxWidth = '100%';
+            video.setAttribute('controls', true);
             lightboxImgContainer.appendChild(video);
 
         } else {
@@ -141,4 +125,47 @@ rightButtonLight.addEventListener('click', () => {
         }
         compteur = parseInt(compteur) + 1;
     }
+}
+const handleLeftButtonFunction = () => {
+    if(compteur > 0) {
+        textLight.innerHTML = arrayLightBox[compteur - 1].title;
+        if(arrayLightBox[compteur - 1].video) {
+            lightboxImgContainer.innerHTML = "";
+            const video = document.createElement('video');
+            video.setAttribute('src', `assets/images/${arrayLightBox[compteur - 1].video}`);
+            video.style.maxHeight = '100%';
+            video.style.maxWidth = '100%';
+            video.setAttribute('controls', true);
+            lightboxImgContainer.appendChild(video);
+
+        } else {
+            lightboxImgContainer.innerHTML = "";
+            const img = document.createElement('img');
+            img.setAttribute('src', `assets/images/${arrayLightBox[compteur - 1].image}`);
+            img.style.maxHeight = '100%';
+            img.style.maxWidth = '100%';
+            lightboxImgContainer.appendChild(img);
+        }
+        compteur -= 1;
+    }
+}
+
+leftButtonLight.addEventListener('click', () => handleLeftButtonFunction());
+rightButtonLight.addEventListener('click', () => handleRightButtonFunction());
+window.addEventListener('keydown', (e) => {
+    if(e.code == "ArrowLeft") {
+        handleLeftButtonFunction();
+    } else if(e.code == "ArrowRight") {
+        handleRightButtonFunction();
+    }
 });
+
+
+// pop-up
+const initTotalLikes = () => {
+    const popupLikes = document.querySelector('.pop-up__likes');
+    setTimeout(() => {
+        
+    }, 500);
+}
+initTotalLikes();

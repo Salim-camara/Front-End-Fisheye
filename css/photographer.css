@@ -1,8 +1,12 @@
 #contact_modal {
-    position: none;
+    position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+}
+
+.contact_modalClose {
+    display: none;
 }
 
 .contact_button {
@@ -270,4 +274,13 @@ form input {
 
 .closelightaction {
     display: none;
+}
+
+.textlight {
+    position: absolute;
+    bottom: 0%;
+    left: 1%;
+    color: #901C1CFF;
+    font-size: larger;
+    font-weight: 500;
 }
