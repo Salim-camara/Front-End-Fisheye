@@ -23,19 +23,50 @@ const photographInfo = (data) => {
 
 
 let arrayLightBox = [];
+// compteur pour lightbox
+let compteur = 0;
+let maxCompteur = 0;
 
 const photographerProject = (data) => {
     arrayLightBox = data;
+    maxCompteur = data.length;
     let totleLikes = 0;
     const container = document.querySelector('.photoContainer');
 
-    for(const element of data) {
-        const { title, image, likes } = element;
+    for(i = 0; i < data.length; i++) {
+        const { title, image, likes } = data[i];
         totleLikes += likes;
         const picture = `assets/images/${image}`;
         const cardContainer = document.createElement('div');
+        cardContainer.id = i;
         const cardTextContainer = document.createElement('div');
         cardTextContainer.classList.add('cardTextContainer');
+
+        const handleCardContainer = () => {
+            compteur = cardContainer.id;
+            // init first img in lightbox
+            if(data[cardContainer.id].video) {
+                lightboxImgContainer.innerHTML = "";
+                const video = document.createElement('video');
+                video.setAttribute('src', `assets/images/${data[cardContainer.id].video}`);
+                video.style.maxHeight = '100%';
+                video.style.maxWidth = '100%';
+                lightboxImgContainer.appendChild(video);
+    
+            } else {
+                lightboxImgContainer.innerHTML = "";
+                const img = document.createElement('img');
+                img.setAttribute('src', `assets/images/${data[cardContainer.id].image}`);
+                img.style.maxHeight = '100%';
+                img.style.maxWidth = '100%';
+                lightboxImgContainer.appendChild(img);
+            }
+            
+        }
+        cardContainer.addEventListener('click', () => {
+            handleCardContainer();
+            document.querySelector('.lightbox').classList.remove('closelightaction');
+        });
 
         const imgCard = document.createElement('img');
         imgCard.classList.add('imgCard');
@@ -58,37 +89,15 @@ const photographerProject = (data) => {
 }
 
 // lightbox
-let maxCompteur = null;
-let compteur = 0;
 const imgContainer = document.querySelector('.imglight');
 const leftButtonLight = document.querySelector('.leftlight');
 const rightButtonLight = document.querySelector('.rightlight');
 const lightboxImgContainer = document.querySelector('.lightbox__container');
+const closeButtonLight = document.querySelector('.closelight');
 
-// init first image
-const handleArrayLightBox = async () => {
-    setTimeout(() => {
-        if(arrayLightBox[0].image) {
-            const firstImg = document.createElement('img');
-            firstImg.setAttribute('src', `assets/images/${arrayLightBox[0].image}`);
-            firstImg.style.maxHeight = '100%';
-            firstImg.style.maxWidth = '100%';
-            lightboxImgContainer.appendChild(firstImg);
-            
-        } else {
-            const firstVideo = document.createElement('video');
-            firstVideo.setAttribute('src', `assets/images/${arrayLightBox[0].video}`);
-            firstVideo.style.maxHeight = '100%';
-            firstVideo.style.maxWidth = '100%';
-            lightboxImgContainer.appendChild(firstVideo);
-        }
-
-        console.log(arrayLightBox);
-        maxCompteur = arrayLightBox.length; 
-    }, 100);
-}
-handleArrayLightBox();
-
+closeButtonLight.addEventListener('click', () => {
+    document.querySelector('.lightbox').classList.add('closelightaction');
+});
 
 leftButtonLight.addEventListener('click', () => {
     if(compteur > 0) {
@@ -114,10 +123,10 @@ leftButtonLight.addEventListener('click', () => {
 
 rightButtonLight.addEventListener('click', () => {
     if(compteur < maxCompteur) {
-        if(arrayLightBox[compteur + 1].video) {
+        if(arrayLightBox[parseInt(compteur) + 1].video) {
             lightboxImgContainer.innerHTML = "";
             const video = document.createElement('video');
-            video.setAttribute('src', `assets/images/${arrayLightBox[compteur + 1].video}`);
+            video.setAttribute('src', `assets/images/${arrayLightBox[parseInt(compteur) + 1].video}`);
             video.style.maxHeight = '100%';
             video.style.maxWidth = '100%';
             lightboxImgContainer.appendChild(video);
@@ -125,11 +134,11 @@ rightButtonLight.addEventListener('click', () => {
         } else {
             lightboxImgContainer.innerHTML = "";
             const img = document.createElement('img');
-            img.setAttribute('src', `assets/images/${arrayLightBox[compteur + 1].image}`);
+            img.setAttribute('src', `assets/images/${arrayLightBox[parseInt(compteur) + 1].image}`);
             img.style.maxHeight = '100%';
             img.style.maxWidth = '100%';
             lightboxImgContainer.appendChild(img);
         }
-        compteur += 1;
+        compteur = parseInt(compteur) + 1;
     }
 });
