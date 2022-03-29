@@ -43,6 +43,7 @@ const photographerProject = (data) => {
         const picture = `assets/images/${image}`;
         const cardContainer = document.createElement('div');
         cardContainer.id = i;
+        cardContainer.classList.add('cardContainer');
         const cardTextContainer = document.createElement('div');
         cardTextContainer.classList.add('cardTextContainer');
 
@@ -69,14 +70,15 @@ const photographerProject = (data) => {
             }
             
         }
-        cardContainer.addEventListener('click', () => {
-            handleCardContainer();
-            document.querySelector('.lightbox').classList.remove('closelightaction');
-        });
 
         const imgCard = document.createElement('img');
         imgCard.classList.add('imgCard');
         imgCard.setAttribute("src", picture);
+
+        imgCard.addEventListener('click', () => {
+            handleCardContainer();
+            document.querySelector('.lightbox').classList.remove('closelightaction');
+        })
 
         const titleCard = document.createElement('span');
         titleCard.innerHTML = `${title}`;
@@ -84,9 +86,26 @@ const photographerProject = (data) => {
         cardTextContainer.appendChild(titleCard);
 
         const likesCard = document.createElement('span');
-        likesCard.innerHTML = `${likes}`;
+        likesCard.innerHTML = `${likes} <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" width="20px" fill="currentColor">
+        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+        </svg>`;
         likesCard.classList.add('likesCard');
         cardTextContainer.appendChild(likesCard);
+
+        likesCard.addEventListener('click', () => {
+            if(!likesCard.classList.contains('liked')) {
+                likesCard.classList.add('liked');
+                likesCard.innerHTML = `${likes + 1} <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" width="20px" fill="currentColor">
+                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                </svg>`;
+
+                const likesPopup = document.querySelector('.pop-up__likes');
+                const likesPopupNewValue = parseInt(document.querySelector('.pop-up__likes').innerHTML.split(' ')[0]) + 1;
+                likesPopup.innerHTML = `${likesPopupNewValue} <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" width="20px" fill="currentColor">
+                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                </svg>`;
+            }
+        })
 
         cardContainer.appendChild(imgCard);
         cardContainer.appendChild(cardTextContainer);
