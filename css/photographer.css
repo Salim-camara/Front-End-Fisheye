@@ -164,6 +164,7 @@ form input {
     width: 100%;
     height: 325px;
     border-radius: 5px 5px 5px 5px;
+    object-fit: cover;
 }
 
 .likesCard {
@@ -211,8 +212,70 @@ form input {
 
 /* tri */
 
-.tri--selecter {
-    background-color: green;
+.triContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 30px 0 30px 0;
+    width: 100%;
+}
+
+.initialSelect {
+    margin-right: 25px;
+}
+
+.tri {
+    display: flex;
+    align-items: center;
+    background-color: #901C1CFF;
+    padding: 10px;
+    color: white;
+    margin: 0;
+    border-radius: 5px;
+    position: relative;
+}
+
+.selectContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    background-color: #901C1CFF;
+    padding: 15px 40px 15px 15px;
+    border-radius: 5px;
+    top: 0;
+    left: 0;
+}
+
+.selectPop::after {
+    position: absolute;
+    top: 48px;
+    left: 6px;
+    content: '';
+    height: 1px;
+    width: 90%;
+    background-color: white;
+}
+
+.selectDate {
+    margin: 25px 0 25px;
+}
+
+.selectTitle::after {
+    position: absolute;
+    bottom: 45px;
+    left: 6px;
+    content: '';
+    height: 1px;
+    width: 90%;
+    background-color: white;
+}
+
+.arrowTri {
+    position: absolute;
+    top: 16px;
+    right: 10px;
+    transform: rotate(180deg);
 }
 
 

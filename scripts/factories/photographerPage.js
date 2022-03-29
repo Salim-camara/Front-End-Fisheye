@@ -38,8 +38,9 @@ const photographerProject = (data) => {
     const container = document.querySelector('.photoContainer');
 
     for(i = 0; i < data.length; i++) {
-        const { title, image, likes } = data[i];
+        const { title, image, likes, video } = data[i];
         totleLikes += likes;
+        const videoForContainer = `assets/images/${video}`;
         const picture = `assets/images/${image}`;
         const cardContainer = document.createElement('div');
         cardContainer.id = i;
@@ -71,14 +72,25 @@ const photographerProject = (data) => {
             
         }
 
-        const imgCard = document.createElement('img');
-        imgCard.classList.add('imgCard');
-        imgCard.setAttribute("src", picture);
-
-        imgCard.addEventListener('click', () => {
-            handleCardContainer();
-            document.querySelector('.lightbox').classList.remove('closelightaction');
-        })
+        if(video) {
+            const videoCard = document.createElement('video');
+            videoCard.classList.add('imgCard');
+            videoCard.setAttribute("src", videoForContainer);
+            cardContainer.appendChild(videoCard);
+            videoCard.addEventListener('click', () => {
+                handleCardContainer();
+                document.querySelector('.lightbox').classList.remove('closelightaction');
+            })
+        } else {
+            const imgCard = document.createElement('img');
+            imgCard.classList.add('imgCard');
+            imgCard.setAttribute("src", picture);
+            cardContainer.appendChild(imgCard);
+            imgCard.addEventListener('click', () => {
+                handleCardContainer();
+                document.querySelector('.lightbox').classList.remove('closelightaction');
+            })
+        }
 
         const titleCard = document.createElement('span');
         titleCard.innerHTML = `${title}`;
@@ -107,7 +119,6 @@ const photographerProject = (data) => {
             }
         })
 
-        cardContainer.appendChild(imgCard);
         cardContainer.appendChild(cardTextContainer);
         container.appendChild(cardContainer);  
     }
