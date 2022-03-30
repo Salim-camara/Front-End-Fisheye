@@ -9,6 +9,7 @@ function photographerFactory(data) {
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
         img.style.borderRadius = '50%';
+        img.style.objectFit = 'cover';
 
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;

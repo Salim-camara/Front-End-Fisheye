@@ -30,5 +30,47 @@ photographer.then(() => {
     photographerProject(dataMediaPhotographer);
 });
 
+// tri
+const triButton = document.querySelector('.tri');
+const titleSort = (x, y) => {
+    return x.title.localeCompare(y.title);
+}
+const likeSort = (x, y) => {
+    return x.likes - y.likes;
+}
+const dateSort = (x, y) => {
+    return new Date(x.date) - new Date(y.date);
+}
+
+// to open tri
+const selectContainer = document.querySelector('.selectContainer');
+triButton.addEventListener('click', () => {
+    selectContainer.classList.toggle('selectContainerActive');
+})
+
+// popularité
+document.querySelector('.selectPop').addEventListener('click', () => {
+    const container = document.querySelector('.photoContainer');
+    container.innerHTML = '';
+    photographerProject(dataMediaPhotographer.sort(likeSort));
+    document.querySelector('.tri_title').innerHTML = 'Popularité';
+})
+// date
+document.querySelector('.selectDate').addEventListener('click', () => {
+    const container = document.querySelector('.photoContainer');
+    container.innerHTML = '';
+    photographerProject(dataMediaPhotographer.sort(dateSort));
+    document.querySelector('.tri_title').innerHTML = 'Date';
+})
+// titre
+document.querySelector('.selectTitle').addEventListener('click', () => {
+    const container = document.querySelector('.photoContainer');
+    container.innerHTML = '';
+    photographerProject(dataMediaPhotographer.sort(titleSort));
+    document.querySelector('.tri_title').innerHTML = 'Titre';
+})
+
+
+
 
 

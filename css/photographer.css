@@ -172,6 +172,10 @@ form input {
     align-items: center;
 }
 
+.likesCard:hover {
+    cursor: pointer;
+}
+
 .photoContainer {
     display: flex;
     flex-wrap: wrap;
@@ -228,7 +232,7 @@ form input {
     display: flex;
     align-items: center;
     background-color: #901C1CFF;
-    padding: 10px;
+    padding: 15px;
     color: white;
     margin: 0;
     border-radius: 5px;
@@ -241,10 +245,19 @@ form input {
     flex-direction: column;
     overflow: visible;
     background-color: #901C1CFF;
+    z-index: 10;
     padding: 15px 40px 15px 15px;
     border-radius: 5px;
     top: 0;
     left: 0;
+}
+
+.selectContainerActive {
+    display: none;
+}
+
+.selecteurHover:hover {
+    cursor: pointer;
 }
 
 .selectPop::after {

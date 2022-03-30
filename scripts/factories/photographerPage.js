@@ -16,6 +16,7 @@ const photographInfo = (data) => {
 
     const imgPhotograph = document.querySelector('.photograph-info--img');
     imgPhotograph.setAttribute("src", picture);
+    imgPhotograph.style.objectFit = 'cover';
 
     // nom du photograhe dans la modal
     document.querySelector('.modalNamePhotographer').innerHTML = `${name}`;
@@ -40,7 +41,7 @@ const photographerProject = (data) => {
     for(i = 0; i < data.length; i++) {
         const { title, image, likes, video } = data[i];
         totleLikes += likes;
-        const videoForContainer = `assets/images/${video}`;
+        const videoForContainer = `assets/images/${video}`; 
         const picture = `assets/images/${image}`;
         const cardContainer = document.createElement('div');
         cardContainer.id = i;
@@ -73,10 +74,15 @@ const photographerProject = (data) => {
         }
 
         if(video) {
+            // const aVideoContainer = document.createElement('a');
+            // aVideoContainer.setAttribute('href', '#');
             const videoCard = document.createElement('video');
             videoCard.classList.add('imgCard');
             videoCard.setAttribute("src", videoForContainer);
+            // videoCard.setAttribute("tabindex", i);
+            // aVideoContainer.appendChild(videoCard);
             cardContainer.appendChild(videoCard);
+            // cardContainer.appendChild(aVideoContainer);
             videoCard.addEventListener('click', () => {
                 handleCardContainer();
                 document.querySelector('.lightbox').classList.remove('closelightaction');
@@ -85,6 +91,7 @@ const photographerProject = (data) => {
             const imgCard = document.createElement('img');
             imgCard.classList.add('imgCard');
             imgCard.setAttribute("src", picture);
+            // imgCard.setAttribute("tabindex", i);
             cardContainer.appendChild(imgCard);
             imgCard.addEventListener('click', () => {
                 handleCardContainer();
