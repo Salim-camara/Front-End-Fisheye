@@ -36,7 +36,7 @@ const titleSort = (x, y) => {
     return x.title.localeCompare(y.title);
 }
 const likeSort = (x, y) => {
-    return x.likes - y.likes;
+    return y.likes - x.likes;
 }
 const dateSort = (x, y) => {
     return new Date(x.date) - new Date(y.date);

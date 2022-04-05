@@ -74,15 +74,10 @@ const photographerProject = (data) => {
         }
 
         if(video) {
-            // const aVideoContainer = document.createElement('a');
-            // aVideoContainer.setAttribute('href', '#');
             const videoCard = document.createElement('video');
             videoCard.classList.add('imgCard');
             videoCard.setAttribute("src", videoForContainer);
-            // videoCard.setAttribute("tabindex", i);
-            // aVideoContainer.appendChild(videoCard);
             cardContainer.appendChild(videoCard);
-            // cardContainer.appendChild(aVideoContainer);
             videoCard.addEventListener('click', () => {
                 handleCardContainer();
                 document.querySelector('.lightbox').classList.remove('closelightaction');
@@ -91,7 +86,6 @@ const photographerProject = (data) => {
             const imgCard = document.createElement('img');
             imgCard.classList.add('imgCard');
             imgCard.setAttribute("src", picture);
-            // imgCard.setAttribute("tabindex", i);
             cardContainer.appendChild(imgCard);
             imgCard.addEventListener('click', () => {
                 handleCardContainer();
