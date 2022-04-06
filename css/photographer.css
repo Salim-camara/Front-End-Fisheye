@@ -368,6 +368,10 @@ form input {
     display: none;
 }
 
+.addBlurLight {
+    filter: blur(2rem);
+}
+
 .textlight {
     position: absolute;
     bottom: 0%;

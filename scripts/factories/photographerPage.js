@@ -81,6 +81,7 @@ const photographerProject = (data) => {
             videoCard.addEventListener('click', () => {
                 handleCardContainer();
                 document.querySelector('.lightbox').classList.remove('closelightaction');
+                document.querySelector('main').classList.add('addBlurLight');
             })
         } else {
             const imgCard = document.createElement('img');
@@ -90,6 +91,7 @@ const photographerProject = (data) => {
             imgCard.addEventListener('click', () => {
                 handleCardContainer();
                 document.querySelector('.lightbox').classList.remove('closelightaction');
+                document.querySelector('main').classList.add('addBlurLight');
             })
         }
 
@@ -135,6 +137,7 @@ const closeButtonLight = document.querySelector('.closelight');
 
 closeButtonLight.addEventListener('click', () => {
     document.querySelector('.lightbox').classList.add('closelightaction');
+    document.querySelector('main').classList.remove('addBlurLight');
 });
 
 const handleRightButtonFunction = () => {
@@ -191,6 +194,8 @@ window.addEventListener('keydown', (e) => {
         handleLeftButtonFunction();
     } else if(e.code == "ArrowRight") {
         handleRightButtonFunction();
+    } else if(e.code == "Escape") {
+        document.querySelector('.lightbox').classList.add('closelightaction');
     }
 });
 
