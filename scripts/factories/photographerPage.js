@@ -16,6 +16,7 @@ const photographInfo = (data) => {
 
     const imgPhotograph = document.querySelector('.photograph-info--img');
     imgPhotograph.setAttribute("src", picture);
+    imgPhotograph.setAttribute("alt", name);
     imgPhotograph.style.objectFit = 'cover';
 
     // nom du photograhe dans la modal
@@ -58,6 +59,7 @@ const photographerProject = (data) => {
                 const video = document.createElement('video');
                 video.setAttribute('src', `assets/images/${data[cardContainer.id].video}`);
                 video.setAttribute('controls', true);
+                video.setAttribute('alt', `${title}, video closeup view`);
                 video.style.maxHeight = '100%';
                 video.style.maxWidth = '100%';
                 lightboxImgContainer.appendChild(video);
@@ -66,6 +68,7 @@ const photographerProject = (data) => {
                 lightboxImgContainer.innerHTML = "";
                 const img = document.createElement('img');
                 img.setAttribute('src', `assets/images/${data[cardContainer.id].image}`);
+                img.setAttribute('alt', `${title}, image closeup view`);
                 img.style.maxHeight = '100%';
                 img.style.maxWidth = '100%';
                 lightboxImgContainer.appendChild(img);
@@ -77,6 +80,7 @@ const photographerProject = (data) => {
             const videoCard = document.createElement('video');
             videoCard.classList.add('imgCard');
             videoCard.setAttribute("src", videoForContainer);
+            videoCard.setAttribute("alt", `${title}, closeup view`);
             cardContainer.appendChild(videoCard);
             videoCard.addEventListener('click', () => {
                 handleCardContainer();
@@ -87,6 +91,7 @@ const photographerProject = (data) => {
             const imgCard = document.createElement('img');
             imgCard.classList.add('imgCard');
             imgCard.setAttribute("src", picture);
+            imgCard.setAttribute("alt", `${title}, closeup view`);
             cardContainer.appendChild(imgCard);
             imgCard.addEventListener('click', () => {
                 handleCardContainer();
@@ -105,6 +110,7 @@ const photographerProject = (data) => {
         <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
         </svg>`;
         likesCard.classList.add('likesCard');
+        likesCard.setAttribute('alt', 'likes');
         cardTextContainer.appendChild(likesCard);
 
         likesCard.addEventListener('click', () => {
@@ -196,6 +202,7 @@ window.addEventListener('keydown', (e) => {
         handleRightButtonFunction();
     } else if(e.code == "Escape") {
         document.querySelector('.lightbox').classList.add('closelightaction');
+        document.querySelector('main').classList.remove('addBlurLight');
     }
 });
 

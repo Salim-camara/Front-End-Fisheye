@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" /> 
     <meta charset="utf-8">
@@ -12,7 +12,7 @@
 
     <!-- header -->
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/>
     </header>
     <!-- pop-up price -->
     <div class="pop-up">
@@ -26,12 +26,12 @@
 
       <div class="photograph-header">
         <div class="photograph-info">
-          <h1 class="photograph-info--title"></h1>
+          <h3 class="photograph-info--title"></h3>
           <h3 class="photograph-info--location"></h3>
           <p class="photograph-info--desc"></p>
         </div>
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-        <img class="photograph-info--img" />
+        <img class="photograph-info--img" alt=""/>
       </div>
 
       <!-- tri -->
@@ -39,7 +39,7 @@
         <div class="initialSelect">Trier par 
       </div>
         <div class="tri">
-          <span class="tri_title selecteurHover">Popularité</span>
+          <span class="tri_title selecteurHover" alt="Order by">Popularité</span>
           <div class="selectContainer selectContainerActive">
             <span class="selectPop selecteurHover">Popularité</span>
             <span class="selectDate selecteurHover">Date</span>
@@ -61,7 +61,7 @@
 				<header>
           <div class="modalHeaderContainer">
             <h2 class="titleModal">Contactez-moi</h2>
-            <img src="assets/icons/close.svg" onclick="closeModal()" />
+            <img src="assets/icons/close.svg" onclick="closeModal()" alt="close modal"/>
           </div>
 
           <div class="modalNamePhotographer">
@@ -82,10 +82,10 @@
 						<input class="inputForm emailInput"/>
 					</div>
           <div>
-						<label>Votre message</label>
-						<textarea class="messageInput"></textarea>
+						<label for="textarea">Votre message</label>
+						<textarea class="messageInput" id="textarea"></textarea>
 					</div>
-          <button class="contact_button" onclick="sendConsole()">Envoyer</button>
+          <button class="contact_button" onclick="sendConsole()" alt="Contact Me">Envoyer</button>
 				</form>
 			</div>
 		</div>
@@ -93,19 +93,18 @@
     <!-- lightbox -->
     <div class="lightbox closelightaction">
       <div class="lightbox__container">
-        <!-- <img alt="lightbox Image" class="imglight" /> -->
       </div>
-      <span class="closelight">
+      <span class="closelight" alt="Close dialog">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 iconLightCross" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
         </svg>
       </span>
-      <span class="rightlight">
+      <span class="rightlight" alt="Next image">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 iconLightArrow" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
         </svg>
       </span>
-      <span class="leftlight">
+      <span class="leftlight" alt="Previous image">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 iconLightArrow" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
         </svg>
