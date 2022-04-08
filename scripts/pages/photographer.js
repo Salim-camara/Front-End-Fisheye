@@ -26,7 +26,9 @@ class FetchPhotographer {
 
 const photographer = new FetchPhotographer(url, id).photographer();
 photographer.then(() => {
+    // eslint-disable-next-line no-undef
     photographInfo(dataPhotographer);
+    // eslint-disable-next-line no-undef
     photographerProject(dataMediaPhotographer);
 });
 
@@ -52,6 +54,7 @@ triButton.addEventListener('click', () => {
 document.querySelector('.selectPop').addEventListener('click', () => {
     const container = document.querySelector('.photoContainer');
     container.innerHTML = '';
+    // eslint-disable-next-line no-undef
     photographerProject(dataMediaPhotographer.sort(likeSort));
     document.querySelector('.tri_title').innerHTML = 'Popularité';
 })
@@ -59,6 +62,7 @@ document.querySelector('.selectPop').addEventListener('click', () => {
 document.querySelector('.selectDate').addEventListener('click', () => {
     const container = document.querySelector('.photoContainer');
     container.innerHTML = '';
+    // eslint-disable-next-line no-undef
     photographerProject(dataMediaPhotographer.sort(dateSort));
     document.querySelector('.tri_title').innerHTML = 'Date';
 })
@@ -66,6 +70,7 @@ document.querySelector('.selectDate').addEventListener('click', () => {
 document.querySelector('.selectTitle').addEventListener('click', () => {
     const container = document.querySelector('.photoContainer');
     container.innerHTML = '';
+    // eslint-disable-next-line no-undef
     photographerProject(dataMediaPhotographer.sort(titleSort));
     document.querySelector('.tri_title').innerHTML = 'Titre';
 })

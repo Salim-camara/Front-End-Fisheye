@@ -1,5 +1,6 @@
 let pricePopup = 0;
 
+// eslint-disable-next-line no-unused-vars
 const photographInfo = (data) => {
     const { portrait, city, country, tagline, name, price } = data;
     pricePopup = price;
@@ -24,9 +25,6 @@ const photographInfo = (data) => {
 }
 
 
-
-
-
 let arrayLightBox = [];
 // compteur pour lightbox
 let compteur = 0;
@@ -34,12 +32,13 @@ let maxCompteur = 0;
 let totleLikes = 0;
 const textLight = document.querySelector('.textlight');
 
+// eslint-disable-next-line no-unused-vars
 const photographerProject = (data) => {
     arrayLightBox = data;
     maxCompteur = data.length;
     const container = document.querySelector('.photoContainer');
 
-    for(i = 0; i < data.length; i++) {
+    for(let i = 0; i < data.length; i++) {
         const { title, image, likes, video } = data[i];
         totleLikes += likes;
         const videoForContainer = `assets/images/${video}`; 
@@ -77,23 +76,29 @@ const photographerProject = (data) => {
         }
 
         if(video) {
+            const aVideoCard = document.createElement('a');
             const videoCard = document.createElement('video');
             videoCard.classList.add('imgCard');
             videoCard.setAttribute("src", videoForContainer);
             videoCard.setAttribute("alt", `${title}, closeup view`);
-            cardContainer.appendChild(videoCard);
-            videoCard.addEventListener('click', () => {
+            aVideoCard.setAttribute("href", '#');
+            aVideoCard.appendChild(videoCard);
+            cardContainer.appendChild(aVideoCard);
+            aVideoCard.addEventListener('click', () => {
                 handleCardContainer();
                 document.querySelector('.lightbox').classList.remove('closelightaction');
                 document.querySelector('main').classList.add('addBlurLight');
             })
         } else {
+            const aImgCard = document.createElement('a');
             const imgCard = document.createElement('img');
             imgCard.classList.add('imgCard');
             imgCard.setAttribute("src", picture);
             imgCard.setAttribute("alt", `${title}, closeup view`);
-            cardContainer.appendChild(imgCard);
-            imgCard.addEventListener('click', () => {
+            aImgCard.setAttribute("href", '#');
+            aImgCard.appendChild(imgCard);
+            cardContainer.appendChild(aImgCard);
+            aImgCard.addEventListener('click', () => {
                 handleCardContainer();
                 document.querySelector('.lightbox').classList.remove('closelightaction');
                 document.querySelector('main').classList.add('addBlurLight');
@@ -135,7 +140,6 @@ const photographerProject = (data) => {
 
 
 // lightbox
-const imgContainer = document.querySelector('.imglight');
 const leftButtonLight = document.querySelector('.leftlight');
 const rightButtonLight = document.querySelector('.rightlight');
 const lightboxImgContainer = document.querySelector('.lightbox__container');

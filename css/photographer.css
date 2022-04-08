@@ -111,6 +111,11 @@ form input {
     margin: 0 100px 0 100px;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .logo--photographerPage {
     margin-left: 0;
     height: 50px;
