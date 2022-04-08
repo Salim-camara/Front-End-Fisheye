@@ -23,14 +23,15 @@ class FetchPhotographer {
             .catch((err) => console.log('erreur récupération data ' + err))
     }
 }
-
+// eslint-disable-next-line no-undef
 const photographer = new FetchPhotographer(url, id).photographer();
 photographer.then(() => {
     // eslint-disable-next-line no-undef
     photographInfo(dataPhotographer);
     // eslint-disable-next-line no-undef
     photographerProject(dataMediaPhotographer);
-});
+})
+.catch((err) => console.log(err));
 
 // tri
 const triButton = document.querySelector('.tri');

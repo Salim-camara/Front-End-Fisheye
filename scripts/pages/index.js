@@ -1,6 +1,5 @@
 // fonction de récupération de la data $$$$$$$$$$$$$$
 let dataPhotographers = null;
-// let dataMedia = null;
 const url = '../../data/photographers.json';
 
 class Fetchdata {
