@@ -1,5 +1,7 @@
+// déclaration de la variable pour la popup en bas à droite
 let pricePopup = 0;
 
+// création de la carte du photographe pour la page photographer.html
 // eslint-disable-next-line no-unused-vars
 const photographInfo = (data) => {
     const { portrait, city, country, tagline, name, price } = data;
@@ -24,7 +26,7 @@ const photographInfo = (data) => {
     document.querySelector('.modalNamePhotographer').innerHTML = `${name}`;
 }
 
-
+// déclaration de certaines variables nécessaire pour la lightbox
 let arrayLightBox = [];
 // compteur pour lightbox
 let compteur = 0;
@@ -32,6 +34,8 @@ let maxCompteur = 0;
 let totleLikes = 0;
 const textLight = document.querySelector('.textlight');
 
+
+// création de carte pour chaque élément du photographe
 // eslint-disable-next-line no-unused-vars
 const photographerProject = (data) => {
     arrayLightBox = data;
@@ -52,7 +56,7 @@ const photographerProject = (data) => {
         const handleCardContainer = () => {
             compteur = cardContainer.id;
             textLight.innerHTML = `${data[cardContainer.id].title}`;
-            // init first img in lightbox
+            // la condition suivante défini quelle sera la première image ou vidéo en fonction de l'image sélectionné par l'utilisateur
             if(data[cardContainer.id].video) {
                 lightboxImgContainer.innerHTML = "";
                 const video = document.createElement('video');
@@ -75,12 +79,13 @@ const photographerProject = (data) => {
             
         }
 
+        // la condition suivante défini les démarches à suivre en fonction de la nature de la data (soit image soit vidéo)
         if(video) {
             const aVideoCard = document.createElement('a');
             const videoCard = document.createElement('video');
             videoCard.classList.add('imgCard');
             videoCard.setAttribute("src", videoForContainer);
-            videoCard.setAttribute("alt", `${title}, closeup view`);
+            videoCard.setAttribute("aria-label", `${title}, closeup view`);
             aVideoCard.setAttribute("href", '#');
             aVideoCard.appendChild(videoCard);
             cardContainer.appendChild(aVideoCard);
@@ -105,6 +110,7 @@ const photographerProject = (data) => {
             })
         }
 
+        // ajout du titre, nb de like ainsi qu'un écouteur d'évènement pour incrément le like
         const titleCard = document.createElement('span');
         titleCard.innerHTML = `${title}`;
         titleCard.classList.add('titleCard');
@@ -145,11 +151,13 @@ const rightButtonLight = document.querySelector('.rightlight');
 const lightboxImgContainer = document.querySelector('.lightbox__container');
 const closeButtonLight = document.querySelector('.closelight');
 
+// écouteur d'évènement pour fermeture de la lightbox
 closeButtonLight.addEventListener('click', () => {
     document.querySelector('.lightbox').classList.add('closelightaction');
     document.querySelector('main').classList.remove('addBlurLight');
 });
 
+// fonction affichant l'image suivante
 const handleRightButtonFunction = () => {
     if(compteur < maxCompteur) {
         textLight.innerHTML = arrayLightBox[parseInt(compteur) + 1].title;
@@ -173,6 +181,7 @@ const handleRightButtonFunction = () => {
         compteur = parseInt(compteur) + 1;
     }
 }
+// fonction affichant l'image précédente
 const handleLeftButtonFunction = () => {
     if(compteur > 0) {
         textLight.innerHTML = arrayLightBox[compteur - 1].title;
@@ -197,6 +206,7 @@ const handleLeftButtonFunction = () => {
     }
 }
 
+// fonctionnement de la lightobx au clavier
 leftButtonLight.addEventListener('click', () => handleLeftButtonFunction());
 rightButtonLight.addEventListener('click', () => handleRightButtonFunction());
 window.addEventListener('keydown', (e) => {
@@ -211,7 +221,8 @@ window.addEventListener('keydown', (e) => {
 });
 
 
-// pop-up
+
+// POP-UP
 const initTotalLikes = () => {
     const popupLikes = document.querySelector('.pop-up__likes');
     const popupPrice = document.querySelector('.pop-up__price');
@@ -219,9 +230,7 @@ const initTotalLikes = () => {
         popupLikes.innerHTML = `${totleLikes} <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" width="20px" fill="currentColor">
         <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
         </svg>`;
-
-        popupPrice.innerHTML = `${pricePopup}€ / jour`
-
+        popupPrice.innerHTML = `${pricePopup}€ / jour`;
     }, 500);
 }
 initTotalLikes();

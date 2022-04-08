@@ -1,7 +1,7 @@
-// fonction de récupération de la data $$$$$$$$$$$$$$
 let dataPhotographers = null;
 const url = '../../data/photographers.json';
 
+// class de récupération de la data
 class Fetchdata {
     constructor(domain) {
         this.domain = domain;
@@ -21,6 +21,7 @@ class Fetchdata {
 }
 const photographers = new Fetchdata(url).photographers();
 
+// fonction de dispatch cartes photographe
 async function displayData(dataPhotographers) {
     const photographersSection = document.querySelector(".photographer_section");
 
@@ -31,7 +32,6 @@ async function displayData(dataPhotographers) {
         photographersSection.appendChild(userCardDOM);
     });
 }
-
 photographers.then(() => displayData(dataPhotographers));
 
 

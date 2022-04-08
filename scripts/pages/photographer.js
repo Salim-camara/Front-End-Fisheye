@@ -4,6 +4,7 @@ const url = '../../data/photographers.json';
 let dataPhotographer = null;
 let dataMediaPhotographer = null;
 
+// class de récupération de la data
 class FetchPhotographer {
     constructor(domain, id) {
         this.domain = domain;
@@ -33,25 +34,30 @@ photographer.then(() => {
 })
 .catch((err) => console.log(err));
 
-// tri
+
+
+// SECTION TRI
 const triButton = document.querySelector('.tri');
+// trier par ordre alphabétique
 const titleSort = (x, y) => {
     return x.title.localeCompare(y.title);
 }
+// trier par popularité
 const likeSort = (x, y) => {
     return y.likes - x.likes;
 }
+// trier par data
 const dateSort = (x, y) => {
     return new Date(x.date) - new Date(y.date);
 }
 
-// to open tri
+// pour ouvrir la liste de tri
 const selectContainer = document.querySelector('.selectContainer');
 triButton.addEventListener('click', () => {
     selectContainer.classList.toggle('selectContainerActive');
 })
 
-// popularité
+// Ajout de l'écouteur d'évenement sur les 3 tris
 document.querySelector('.selectPop').addEventListener('click', () => {
     const container = document.querySelector('.photoContainer');
     container.innerHTML = '';
@@ -59,7 +65,6 @@ document.querySelector('.selectPop').addEventListener('click', () => {
     photographerProject(dataMediaPhotographer.sort(likeSort));
     document.querySelector('.tri_title').innerHTML = 'Popularité';
 })
-// date
 document.querySelector('.selectDate').addEventListener('click', () => {
     const container = document.querySelector('.photoContainer');
     container.innerHTML = '';
@@ -67,7 +72,6 @@ document.querySelector('.selectDate').addEventListener('click', () => {
     photographerProject(dataMediaPhotographer.sort(dateSort));
     document.querySelector('.tri_title').innerHTML = 'Date';
 })
-// titre
 document.querySelector('.selectTitle').addEventListener('click', () => {
     const container = document.querySelector('.photoContainer');
     container.innerHTML = '';

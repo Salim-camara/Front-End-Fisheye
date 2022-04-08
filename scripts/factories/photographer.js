@@ -1,9 +1,10 @@
 // eslint-disable-next-line no-unused-vars
 function photographerFactory(data) {
+    // récupération de la data nécessaire à la création de cartes
     const { name, portrait, city, country, tagline, price, id } = data;
-
     const picture = `assets/photographers/${portrait}`;
-
+    
+    // création des cartes pour les photographes à dispatch sur l'index.html
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
 
@@ -16,7 +17,6 @@ function photographerFactory(data) {
         h2.textContent = name;
         h2.classList.add('h2');
 
-        // container h2+image pour balise <a/>
         const linkContainer = document.createElement('a');
         linkContainer.appendChild(img);
         linkContainer.appendChild(h2);
@@ -35,9 +35,6 @@ function photographerFactory(data) {
         priceTotal.textContent = `${price}€/jour`;
         priceTotal.classList.add('price');
         
-
-        // article.appendChild(img);
-        // article.appendChild(h2);
         article.appendChild(linkContainer);
         article.appendChild(descTitle);
         article.appendChild(desc);
