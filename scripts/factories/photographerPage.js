@@ -87,6 +87,7 @@ const photographerProject = (data) => {
             videoCard.setAttribute("src", videoForContainer);
             videoCard.setAttribute("aria-label", `${title}, closeup view`);
             aVideoCard.setAttribute("href", '#');
+            aVideoCard.classList.add('aImageVideoContainer');
             aVideoCard.appendChild(videoCard);
             cardContainer.appendChild(aVideoCard);
             aVideoCard.addEventListener('click', () => {
@@ -101,6 +102,7 @@ const photographerProject = (data) => {
             imgCard.setAttribute("src", picture);
             imgCard.setAttribute("alt", `${title}, closeup view`);
             aImgCard.setAttribute("href", '#');
+            aImgCard.classList.add('aImageVideoContainer');
             aImgCard.appendChild(imgCard);
             cardContainer.appendChild(aImgCard);
             aImgCard.addEventListener('click', () => {
